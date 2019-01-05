@@ -1,13 +1,23 @@
 apply plugin: 'java'
 
-
-
 version 1.0
+
+sourceSets {
+    main{
+        java.srcDirs = ['src']
+    }
+}
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    compile files('libs/haha-2.0.4.jar')
+    compile files('libs/trove4j-20160824.jar')
 }
 
+// 指定编码
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
 
 jar {
     manifest {

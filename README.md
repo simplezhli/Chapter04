@@ -1,7 +1,17 @@
 # Chapter04
-终于迎来了第一个课后作业，今天我们尝试通过分析内存文件hprof快速判断内存中是否存在重复的图片，并且将这些重复图片的PNG、堆栈等信息输出。
+通过分析内存文件hprof快速判断内存中是否存在重复的图片，并且将这些重复图片的PNG、堆栈等信息输出。
 
 **需要注意的是需要使用8.0以下的机器，因为8.0以后Bitmap中的buffer已经放到native内存中了**
+
+
+## 使用方式
+
+```
+//调用方法：
+java -jar tools/DuplicatedBitmapAnalyzer-1.0.jar hprof文件路径
+
+```
+
 
 下面是一个结果的样例：
 ```
@@ -63,16 +73,3 @@ ArrayInstance buffer = HahaHelper.fieldValue(((ClassInstance) bitmapInstance).ge
 
 整个思路就是通过"mBuffer"的hash值判断哪些Bitmap是重复的。
 
-提交方法
-====
-整个提交方法如下：
-
-1. 完善DuplicatedBitmapAnalyzer项目
-2. 注明极客时间的账号 + 实现原理与心得体会
-3. 发送pull request 到本repo
-
-奖励
-===
-根据项目质量和提交pull request的时间，抽取部分同学送上经典书籍。
-
-最终结果也会在极客时间和repo中公布，欢迎大家积极参与！
